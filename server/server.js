@@ -8,11 +8,14 @@ const db = require('./db/connection')
 const PORT = process.env.PORT || 3333
 
 // import routes
-const api_routes = require('./routes/api_routes')
+
+
 
 // middleware
 app.use(express.json())
 app.use(cookieParser())
+
+
 
 // ensure the db is open/start the server
 db.once('open', () => {
