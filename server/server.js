@@ -7,7 +7,8 @@ const app = express()
 const db = require('./db/connection')
 const PORT = process.env.PORT || 3333
 
-// import routes
+// import routes blank for now
+
 
 
 
