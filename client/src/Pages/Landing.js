@@ -1,46 +1,47 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function UserList() {
-    const [users, setUsers] = useState([])
-    const [selectedUser, setSelectedUser] = usestate('')
+function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
-
-    useEffect(() => {
-        fetch('/api/users')
-            .then(response => response.json())
-            .then(data => setUsers(data))
-            .catch(error => console.error(error))
-    }, [])
-
-    const handleUserClick = user => {
-        setSelectedUser(user)
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`);
+      setSearchResults(response.data.items || []);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
+  };
 
-    return (
-        <>
-            <h2>User List</h2>
-            <ul>
-                {users.map(user => (
-                    <li key={user.id} onClick={() => handleUserClick(user)}>
-                        <h3>{user.username}</h3>
-                        <p>{user.email}</p>
-                    </li>
-                ))}
-            </ul>
-
-            {selectedUser && (
-                <div>
-                    <h2>{selectedUser.username}'s Favorite Books</h2>
-                    <ul>
-                        {selectedUser.favoriteBooks.map((book,index => (
-                            <li key={index}>{book}</li>
-                        )))}
-                    </ul>
-            
-                </div>
-            )}
-        </>
-    );
+  return (
+    <div>
+      <h1>Search Books</h1>
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Enter a book title"
+        />
+        <button type="submit">Search</button>
+      </form>
+      <div>
+        {searchResults.slice(0, 10).map((book) => (
+          <div key={book.id}>
+            <img
+              src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
+              alt={`${book.volumeInfo.title} cover`}
+            />
+            <h3>{book.volumeInfo.title}</h3>
+            <p>Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'}</p>
+            <p>Description: {book.volumeInfo.description || 'No description available'}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default UserList
+export default App;
