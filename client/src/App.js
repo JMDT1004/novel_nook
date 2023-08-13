@@ -1,12 +1,12 @@
 import logo from './logo.svg';
-import './App.css';
+import './index.scss';
 
 
 
 
 // Import Components
-import Header from 'Pages/Header'
-import Footer from 'Pages/Footer'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 
 
