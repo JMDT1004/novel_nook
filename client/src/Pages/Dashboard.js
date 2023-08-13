@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 function UserList() {
     const [books, setBooks] = useState([]);
     const [selectedUser, setSelectedUser] = useState('');
+
     useEffect(() => {
         axios.get('/api/books')
             .then(res => {
@@ -12,9 +14,11 @@ function UserList() {
                 console.error(error);
             });
     }, []);
+
     const handleUserClick = user => {
         setSelectedUser(user);
     }
+
     return (
         <>
             <h2>User List</h2>
@@ -29,6 +33,7 @@ function UserList() {
                     </div>
                 ))}
             </ul>
+
             {selectedUser && (
                 <div>
                     <h2>{selectedUser.username}'s Favorite Books</h2>
@@ -43,3 +48,4 @@ function UserList() {
     );
 }
 export default UserList;
+

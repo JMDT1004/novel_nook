@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-
-
 function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -27,6 +25,7 @@ function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) 
     </form>
   );
 }
+
 function RegisterForm({ handleInputChange, handleSubmit, errorMessage, formData }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -56,6 +55,7 @@ function RegisterForm({ handleInputChange, handleSubmit, errorMessage, formData 
     </form>
   );
 }
+
 function AuthForm(props) {
   const [formData, setFormData] = useState({
     username: '',
@@ -65,9 +65,11 @@ function AuthForm(props) {
   });
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+
   const handleInputChange = e => {
     const prop = e.target.name;
     const value = e.target.value;
+
     if (prop === 'isLogin') {
       setFormData({
         ...formData,
@@ -80,11 +82,13 @@ function AuthForm(props) {
       });
     }
   };
+<
   const handleSubmit = async e => {
     e.preventDefault();
     const url = formData.isLogin ? '/api/login' : '/api/register';
     try {
       const res = await axios.post(url, formData);
+
       props.setState(oldState => {
         return {
           ...oldState,
@@ -98,11 +102,13 @@ function AuthForm(props) {
         password: '',
         isLogin: true
       });
+
       navigate('/dashboard');
     } catch (err) {
       setErrorMessage(err.response.data.message);
     }
   };
+
   return (
     <>
       <h1>{formData.isLogin ? 'Log In' : 'Register'}</h1>
@@ -144,4 +150,6 @@ function AuthForm(props) {
     </>
   );
 }
+
 export default AuthForm;
+

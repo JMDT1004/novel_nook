@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -5,6 +6,7 @@ import axios from 'axios';
 function Landing() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
@@ -14,6 +16,7 @@ function Landing() {
       console.error('Error fetching data:', error);
     }
   };
+
   return (
     <div>
       <h1>Search Books</h1>
@@ -42,4 +45,6 @@ function Landing() {
     </div>
   );
 }
+
 export default Landing;
+
