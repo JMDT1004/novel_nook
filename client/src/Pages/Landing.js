@@ -1,1 +1,9 @@
-// call to action//
+function Landing () {
+  return (
+  <>
+  
+  </>
+  )
+}
+
+export default Landing
