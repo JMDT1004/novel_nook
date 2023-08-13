@@ -20,6 +20,7 @@ function App() {
      <div>
 
       <Header />
+      {/* <Landing /> */}
       <Search />
       <About />
       <Dashboard />
