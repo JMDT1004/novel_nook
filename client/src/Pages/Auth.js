@@ -82,7 +82,7 @@ function AuthForm(props) {
       });
     }
   };
-<
+
   const handleSubmit = async e => {
     e.preventDefault();
     const url = formData.isLogin ? '/api/login' : '/api/register';
