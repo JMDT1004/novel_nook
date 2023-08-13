@@ -1,34 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom'
 
 
 
-
-// Import Components
-import Header from 'Pages/Header'
-import Footer from 'Pages/Footer'
-
-
+// Import components
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 // Import Pages
+
 import Landing from './Pages/Landing'
 import About from './Pages/About'
 import Dashboard from './Pages/Dashboard'
 import Auth from './Pages/Auth'
 
-
-
 function App() {
   return (
-    <div>
+    <BrowserRouter>
+     <div>
+
       <Header />
       <Landing />
       <About />
       <Dashboard />
       <Auth />
       <Footer />
-    </div>
+
+    </div></BrowserRouter>
+
   );
 }
-
 export default App;
