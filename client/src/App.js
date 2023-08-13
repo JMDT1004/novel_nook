@@ -12,6 +12,7 @@ import Landing from './Pages/Landing'
 import About from './Pages/About'
 import Dashboard from './Pages/Dashboard'
 import Auth from './Pages/Auth'
+import Search from './Pages/Search'
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
      <div>
 
       <Header />
-      <Landing />
+      <Search />
       <About />
       <Dashboard />
       <Auth />
