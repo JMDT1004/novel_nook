@@ -7,21 +7,21 @@ function Book() {
   const [data, setData] = useState({ book: {} });
   const { id } = useParams();
   useEffect(() => {
-    axios.get(
-      `https://www.googleapis.com/books/v1/volumes/${id}`
-    ).then((result) => {
-      console.log(result.data);
-      setData({ book: result.data });
-    });
-    
-    
+    axios
+      .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
+      .then((result) => {
+        setData({ book: result.data });
+      });
   }, []);
-  // console.log(data)
+  console.log(data.book.volumeInfo);
+
   return (
     <>
-      <h1>Book</h1>
-
-      {data.book && <p>{JSON.stringify(data.book.volumeInfo, null, 2)}</p>}
+      <img src={data.book.volumeInfo?.imageLinks.thumbnail} />
+      <h1>{data.book.volumeInfo?.title}</h1>
+      <h2>{data.book.volumeInfo?.authors}</h2>
+      <p>{data.book.volumeInfo?.description}</p>
+      <a href="{data.book.volumeInfo?.infoLink}">More Info</a>
     </>
   );
 }
