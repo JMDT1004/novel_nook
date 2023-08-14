@@ -1,5 +1,4 @@
 import axios from "axios";
-import { BookCard } from "../components/Bookcard";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -13,7 +12,7 @@ function Book() {
         setData({ book: result.data });
       });
   }, []);
-  console.log(data.book.volumeInfo);
+ 
 
   return (
     <>
