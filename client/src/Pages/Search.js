@@ -26,7 +26,7 @@ function Search() {
       const response = await axios.get('https://www.googleapis.com/books/v1/volumes?q=printType=books&maxResults=40');
       const items = response.data.items || [];
       const shuffled = items.sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, 4);
+      const selected = shuffled.slice(0, 5);
       setRandomBooks(selected);
     } catch (error) {
       console.error('Error fetching random books:', error);
@@ -63,7 +63,6 @@ function Search() {
             />
             <h3>{book.volumeInfo.title}</h3>
             <p>Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'}</p>
-            <p>Description: {book.volumeInfo.description || 'No description available'}</p>
           </div>
         ))}
       </div>
