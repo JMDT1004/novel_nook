@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -21,6 +22,10 @@ import Landing from './Pages/Landing'
 function App() {
   return (
     <>
+    <Helmet>
+        <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css" />
+        <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
+      </Helmet>
       <Header />
      <Routes>
       <Route path="/search" element={<Search />} />
