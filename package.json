@@ -4,8 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
+    "server:dev": "cd ./server && npm run dev",
+    "browser:dev": "cd ./browser && npm run start",
+    "dev": "concurrently \"npm run server:dev\" \"npm run browser:dev\"",
+    "build": "cd ./client && npm run build",
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\""
+=======
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd client && npm start"
+>>>>>>> bd181fd4a3b58600e0a97a0c7b9370f2fec2bbe8
   },
   "keywords": [],
   "author": "",
