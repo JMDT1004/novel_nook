@@ -4,7 +4,8 @@ import { BookCard } from "../components/Bookcard"
 function Book () {
     return (
         <>
-              <BookCard books={searchResults} />
+            <h1>Book</h1>
+              <BookCard books={[]} />
 
         </>
     )
