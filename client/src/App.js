@@ -28,7 +28,7 @@ function App() {
         <Route path="/dashboad" element={<Dashboard />} />
         <Route path="/login" element={<Auth />} />
         <Route path="/landing" element={<Landing />} />
-        <Route path="/book" element={<Book />} />
+        <Route path="/book/:id" element={<Book />} />
       </Routes>
       <Footer />
     </>

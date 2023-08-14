@@ -87,11 +87,12 @@ function AuthForm(props) {
     const url = formData.isLogin ? '/api/login' : '/api/register';
     try {
       const res = await axios.post(url, formData);
+      console.log(res)
 
       props.setState(oldState => {
         return {
           ...oldState,
-          user: res.data.user
+          user: res?.data?.user
         };
       });
       setErrorMessage('');
@@ -104,7 +105,7 @@ function AuthForm(props) {
 
       navigate('/dashboard');
     } catch (err) {
-      setErrorMessage(err.response.data.message);
+      setErrorMessage(err.response?.data.message);
     }
   };
 
