@@ -25,7 +25,7 @@ async function isAuthenticated(req, res, next) {
   }
   
 
-router.post("/favorite", isAuthenticated, async (req, res) => {
+router.post("/favorites", isAuthenticated, async (req, res) => {
     const favorite = await Favorite.create({
       text: req.body.text,
       author: req.user._id

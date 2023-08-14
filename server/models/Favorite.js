@@ -5,6 +5,12 @@ const favoriteSchema = new Schema({
         type: String,
         required: true
     },
+    image: {
+        type: String,
+    },
+    title: {
+        type: String
+    },
     user: {
         type: Types.ObjectId,
         ref: 'User'

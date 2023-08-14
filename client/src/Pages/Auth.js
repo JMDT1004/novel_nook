@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
 function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) {
   return (
     <form onSubmit={handleSubmit}>
