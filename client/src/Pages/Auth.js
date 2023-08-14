@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -84,9 +85,7 @@ function AuthForm(props) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-
     const url = formData.isLogin ? '/api/login' : '/api/register';
-
     try {
       const res = await axios.post(url, formData);
 
@@ -153,3 +152,4 @@ function AuthForm(props) {
 }
 
 export default AuthForm;
+

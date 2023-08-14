@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import axios from 'axios';
 
-function App() {
+
+function Landing() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -44,4 +46,5 @@ function App() {
   );
 }
 
-export default App;
+export default Landing;
+
