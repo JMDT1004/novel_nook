@@ -12,6 +12,7 @@ import Auth from "./Pages/Auth";
 import Search from "./Pages/Search";
 import Landing from "./Pages/Landing";
 import Book from "./Pages/Book";
+import Results from "./Pages/Results";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/login" element={<Auth />} />
             <Route path="/landing" element={<Landing />} />
             <Route path="/book/:id" element={<Book />} />
+            <Route path="/results" element= {<Results />} />
           </Routes>
         </main>
 
