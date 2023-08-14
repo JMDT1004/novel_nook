@@ -22,14 +22,19 @@ function App() {
         <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
       </Helmet>
       <Header />
-      <Routes>
-        <Route path="/search" element={<Search />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/dashboad" element={<Dashboard />} />
-        <Route path="/login" element={<Auth />} />
-        <Route path="/landing" element={<Landing />} />
-        <Route path="/book/:id" element={<Book />} />
-      </Routes>
+
+      <main>
+        <Routes>
+        
+          <Route path="/search" element={<Search />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboad" element={<Dashboard />} />
+          <Route path="/login" element={<Auth />} />
+          <Route path="/landing" element={<Landing />} />
+          <Route path="/book" element={<Book />} />
+        </Routes>
+      </main>
+
       <Footer />
     </>
 
