@@ -22,6 +22,7 @@ function App() {
         <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
       </Helmet>
       <Header />
+
       <main>
         <Routes>
         
@@ -33,6 +34,7 @@ function App() {
           <Route path="/book" element={<Book />} />
         </Routes>
       </main>
+
       <Footer />
     </>
 

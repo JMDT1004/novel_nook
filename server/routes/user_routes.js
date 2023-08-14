@@ -5,6 +5,7 @@ const User = require("../models/User");
 
 // User Routes
 router.post("/register", async (req, res) => {
+  console.log('something')
   try {
     const user = await User.create(req.body);
     const token = await createToken(user._id);
