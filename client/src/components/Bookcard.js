@@ -1,9 +1,9 @@
 import React from 'react'
 
-export function BookCard({ searchResults }) {
+export function BookCard({ favoriteBooks }) {
   return (
     <div>
-      {searchResults.slice(0, 5).map((book) => (
+      {favoriteBooks.map((book) => (
         <div key={book.id}>
           <img
             src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
