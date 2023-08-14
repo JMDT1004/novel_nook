@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BookCard } from '../components/Bookcard';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [randomBooks, setRandomBooks] = useState([]);
-  const resultsPerPage = 40
+  const resultsPerPage = 40;
 
+
+  // Search books from Google Books API
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
@@ -17,6 +20,7 @@ function Search() {
     }
   };
 
+  // Search random books from Google Books API
   const fetchRandomBooks = async () => {
     try {
       const response = await axios.get('https://www.googleapis.com/books/v1/volumes?q=printType=books&maxResults=40');
@@ -41,24 +45,13 @@ function Search() {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Enter a book title"
+          placeholder="Enter Title or Author"
         />
         <button type="submit">Search</button>
       </form>
 
-      <div>
-        {searchResults.map((book) => (
-          <div key={book.id}>
-            <img
-              src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
-              alt={`${book.volumeInfo.title} cover`}
-            />
-            <h3>{book.volumeInfo.title}</h3>
-            <p>Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'}</p>
-            <p>Description: {book.volumeInfo.description || 'No description available'}</p>
-          </div>
-        ))}
-      </div>
+      {/* Use BookCard component for search results */}
+      <BookCard books={searchResults} />
 
       <div>
         <h2>Try These Out</h2>
