@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer id='footer' className="relative bg-blueGray-200 pt-8 pb-6">
+    <footer id='footer' className="relative bg-blueGray-200 pt-8 pb-6  ">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full lg:w-6/12 px-4">
@@ -11,7 +11,7 @@ function Footer() {
               Follow our bookish adventures on these platforms.
             </h5>
             <div className="mt-6 lg:mb-0 mb-6">
-              <button className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+              <button className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-m outline-none focus:outline-none mr-2" type="button">
                 <i className="fab fa-twitter" href="https://twitter.com/home"></i></button><button className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
                 <i className="fab fa-facebook-square" href="https://www.facebook.com/"></i></button><button className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
                 <i className="fab fa-discord" href="https://discord.com/home"></i></button><button className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
@@ -63,7 +63,7 @@ function Footer() {
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
             <div className="text-sm text-blueGray-500 font-semibold py-1">
               Copyright © <span id="get-current-year"> {new Date().getFullYear()}</span><a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank" /> NovelNook by
-              <a href="https://www.creative-tim.com?ref=njs-profile" className="text-blueGray-500 hover:text-blueGray-800"> Jeremy Boyer, Jonahtan Goncalves, Jamil Barrett & Janoi Thompson</a>.
+              <a href="https://www.creative-tim.com?ref=njs-profile" className="text-blueGray-500 hover:text-blueGray-800"> Jeremy Boyer, Jonathan Goncalves, Jamil Barrett & Janoi Thompson</a>.
             </div>
           </div>
         </div>
