@@ -87,7 +87,7 @@ function AuthForm(props) {
     const url = formData.isLogin ? '/api/login' : '/api/register';
     try {
       const res = await axios.post(url, formData);
-      console.log(res)
+      
 
       props.setState(oldState => {
         return {
