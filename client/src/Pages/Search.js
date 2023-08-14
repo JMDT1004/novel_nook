@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BookCard } from '../components/Bookcard';
+import { Link } from 'react-router-dom'
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -57,10 +58,12 @@ function Search() {
         <h2>Try These Out</h2>
         {randomBooks.map((book) => (
           <div key={book.id}>
-            <img
-              src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
-              alt={`${book.volumeInfo.title} cover`}
-            />
+            <Link key={book.id} to={`/book/${book.id}`}>
+              <img
+                src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
+                alt={`${book.volumeInfo.title} cover`}
+              />
+            </Link>
             <h3>{book.volumeInfo.title}</h3>
             <p>Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'}</p>
           </div>

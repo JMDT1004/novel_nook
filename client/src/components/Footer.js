@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function Footer() {
   return (
     <footer id='footer' className="relative bg-blueGray-200 pt-8 pb-6">
