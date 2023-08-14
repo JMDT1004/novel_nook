@@ -1,11 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
-import Results from '../Pages/Results';
 
-function Header() {
+function Header({ setSearchResults, state, setState }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
   const resultsPerPage = 40;
 
   // Search books from Google Books API
@@ -14,12 +13,27 @@ function Header() {
     try {
       const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=${resultsPerPage}`);
       setSearchResults(response.data.items || []);
+      setSearchTerm('');
+      navigate('/search');
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
 
+  const logout = async e => {
+    e.preventDefault();
 
+    await axios.get('/api/logout');
+
+    setState((oldState) => {
+      return {
+        ...oldState,
+        user: null
+      }
+    })
+
+    navigate('/');
+  }
 
   return (
     <header className="top  ">
@@ -32,7 +46,7 @@ function Header() {
             <ul className="flex items-center space-x-6 pl-5">
               <li className="font-semibold text-gray-700">
                 <NavLink
-                  to="/landing"
+                  to="/"
                   className={({ isActive }) =>
                     isActive ? "text-blue-600 active-link" : ""
                   }
@@ -52,46 +66,58 @@ function Header() {
                 </NavLink>
               </li>
 
-              <li className="font-semibold text-gray-700">
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? "text-blue-600 active-link" : ""
-                  }
-                >
-                  Sign In/ Join
-                </NavLink>
-              </li>
+              {!state.user && (
+                  <li className="font-semibold text-gray-700">
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-600 active-link" : ""
+                    }
+                  >
+                    Sign In/ Join
+                  </NavLink>
+                </li>
+              )}
 
-              <li className="font-semibold text-gray-700">
-                <NavLink
-                  to="/dashboard"
-                  className={({ isActive }) =>
-                    isActive ? "text-blue-600 active-link" : ""
-                  }
-                >
-                  Dashboard
-                </NavLink>
-              </li>
+              {state.user && (
+                <>
+                  <li className="font-semibold text-gray-700">
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-600 active-link" : ""
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                  
+                </li>
+                <li className="font-semibold text-gray-700">
+                  
+                  <NavLink onClick={logout} to="/logout">Log Out</NavLink>
+                </li>
+                </>
+                
+              ) }
             </ul>
           </div>
           {/* <!-- This is an example component --> */}
 
           <div className="relative mx-auto text-gray-600 pt-2 ">
-  <input
-    className="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none w-96 md:w-120 lg:w-150"
-    type="search"
-    name="search"
-    placeholder="Search by Title, Author or ISBN"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    onKeyDown={(e) => {
-      if (e.key === 'Enter') {
-        handleSearch(e);
-      }
-    }}
-  />
-</div>
+            <input
+              className="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none w-96 md:w-120 lg:w-150"
+              type="search"
+              name="search"
+              placeholder="Search by Title, Author or ISBN"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearch(e);
+                }
+              }}
+            />
+          </div>
 
           <div className="pl-4 lg:ml-4 relative inline-block lg:block hidden">
             <a className="" href="/cart">
@@ -117,11 +143,8 @@ function Header() {
           </div>
         </div>
       </nav>
-      <Results searchResults={searchResults} />
     </header>
   );
 }
 
 export default Header;
-
-

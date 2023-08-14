@@ -9,7 +9,7 @@ export function BookCard({ books }) {
         <div key={book.id}>
           <NavLink key={book.id} to={`/book/${book.id}`}>
             <img
-              src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
+              src={book.volumeInfo.imageLinks?.thumbnail}
               alt={`${book.volumeInfo.title} cover`}
             />
           </NavLink>

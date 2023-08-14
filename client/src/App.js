@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import { Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
@@ -12,9 +15,26 @@ import Auth from "./Pages/Auth";
 import Search from "./Pages/Search";
 import Landing from "./Pages/Landing";
 import Book from "./Pages/Book";
-import Results from "./Pages/Results";
 
 function App() {
+  const [searchResults, setSearchResults] = useState([]);
+  const [state, setState] = useState({
+    user: null,
+    loading: true
+  });
+
+  useEffect(() => {
+    axios.get('/api/authenticated')
+      .then(res => {
+        console.log(res.data.user)
+        setState({
+          ...state,
+          user: res.data.user,
+          loading: false,
+        })
+      })
+  }, []);
+
   return (
     <>
       <HelmetProvider>
@@ -29,17 +49,16 @@ function App() {
           />
         </Helmet>
 
-        <Header />
+        <Header state={state} setState={setState} setSearchResults={setSearchResults} />
 
         <main>
           <Routes>
-            <Route path="/search" element={<Search />} />
+            <Route path="/search" element={<Search searchResults={searchResults} />} />
             <Route path="/about" element={<About />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Auth />} />
-            <Route path="/landing" element={<Landing />} />
+            <Route path="/" element={<Landing />} />
             <Route path="/book/:id" element={<Book />} />
-            <Route path="/results" element= {<Results />} />
           </Routes>
         </main>
 
