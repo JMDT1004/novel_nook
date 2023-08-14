@@ -5,11 +5,12 @@ function Search() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [randomBooks, setRandomBooks] = useState([]);
+  const resultsPerPage = 40
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`);
+      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=${resultsPerPage}`);
       setSearchResults(response.data.items || []);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -46,7 +47,7 @@ function Search() {
       </form>
 
       <div>
-        {searchResults.slice(0, 5).map((book) => (
+        {searchResults.map((book) => (
           <div key={book.id}>
             <img
               src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
