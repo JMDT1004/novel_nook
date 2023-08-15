@@ -78,17 +78,3 @@ export default Book;
 
 
 
-/* <>
-      <img src={data.book.volumeInfo?.imageLinks.thumbnail} />
-      <h1>{data.book.volumeInfo?.title}</h1>
-      <h2>{data.book.volumeInfo?.authors}</h2>
-      <p>{data.book.volumeInfo?.description}</p>
-      <a href={data.book.volumeInfo?.infoLink}>More Info</a>
-      {props.state.user ? (
-        <button onClick={addToFavorites}>Add to Favorites</button>
-      ) : <p><a href="/login">Login to add to favorites</a></p>}
-    </>
-  );
-}
-
-export default Book;

@@ -87,7 +87,7 @@ function AuthForm(props) {
     const url = formData.isLogin ? '/api/login' : '/api/register';
     try {
       const res = await axios.post(url, formData);
-      
+
 
       props.setState(oldState => {
         return {
@@ -111,45 +111,49 @@ function AuthForm(props) {
 
   return (
     <>
-      <h1>{formData.isLogin ? 'Log In' : 'Register'}</h1>
-      {formData.isLogin ? (
-        <LoginForm
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          errorMessage={errorMessage}
-          formData={formData}
-        />
-      ) : (
-        <RegisterForm
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          errorMessage={errorMessage}
-          formData={formData}
-        />
-      )}
-      <div>
-        <label htmlFor="login">Login</label>
-        <input
-          name="isLogin"
-          onChange={handleInputChange}
-          type="radio"
-          id="login"
-          value="login"
-          checked={formData.isLogin}
-        />
-        <label htmlFor="register">Register</label>
-        <input
-          name="isLogin"
-          onChange={handleInputChange}
-          type="radio"
-          id="register"
-          value="register"
-          checked={!formData.isLogin}
-        />
-      </div>
-    </>
+    <h1>{formData.isLogin ? 'Log In' : 'Register'}</h1>
+    {formData.isLogin ? (
+      <LoginForm
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        errorMessage={errorMessage}
+        formData={formData}
+      />
+    ) : (
+      <RegisterForm
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        errorMessage={errorMessage}
+        formData={formData}
+      />
+    )}
+    <div>
+      <label htmlFor="login">Login</label>
+      <input
+        name="isLogin"
+        onChange={handleInputChange}
+        type="radio"
+        id="login"
+        value="login"
+        checked={formData.isLogin}
+      />
+      <label htmlFor="register">Register</label>
+      <input
+        name="isLogin"
+        onChange={handleInputChange}
+        type="radio"
+        id="register"
+        value="register"
+        checked={!formData.isLogin}
+      />  
+    </div>
+  </>
+  
   );
 }
 
 export default AuthForm;
+
+
+ 
 
