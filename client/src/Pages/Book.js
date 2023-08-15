@@ -30,7 +30,7 @@ function Book(props) {
       <h1>{data.book.volumeInfo?.title}</h1>
       <h2>{data.book.volumeInfo?.authors}</h2>
       <p>{data.book.volumeInfo?.description}</p>
-      <a href={data.book.volumeInfo?.infoLink}>More Info</a>
+      <a href="{data.book.volumeInfo?.infoLink}">More Info</a>
       {props.state.user && (
         <button onClick={addToFavorites}>Add to Favorites</button>
       )}
