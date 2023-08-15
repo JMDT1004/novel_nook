@@ -21,17 +21,19 @@ function Dashboard(props) {
  
   return (
     <>
-      <h2>Welcome, {props.state.user?.username}!</h2>
-      <h3>Here are your favorite books:</h3>
+      <h2 className="text-3xl font-bold text-center">Welcome, {props.state.user?.username}!</h2>
+      <h3 className="text-xl font-bold text-center">Here are your favorite books:</h3>
 
-      <div className="flex flex-wrap">
+      <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
       {props.state.user?.favorites.map((favorite) => (
-        <div key={favorite._id}>
+        <div className="bg-white rounded-lg shadow-md p-4" key={favorite._id}>
+          <div className="text-center flex items-center justify-center">
           <a href={`book/${favorite.bookId}`}>
             <img alt={favorite.title} src={favorite.image} />
             <h3>{favorite.title}</h3>
           </a>
-          <button className="bg-red-500 px-2 py-2 text-white" onClick={() => deleteFromFavorites(favorite._id)}>Delete from favorites</button>
+          </div>
+          <button className="bg-red-500  text-white w-full font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" onClick={() => deleteFromFavorites(favorite._id)}>Delete</button>
         </div>
       ))}
       </div>
