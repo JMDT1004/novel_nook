@@ -32,7 +32,53 @@ function Book(props) {
   }
 
   return (
-    <>
+    <div class="container my-24 mx-auto md:px-6">
+
+    <section class="mb-32">
+      <div
+        class="block rounded-lg bg-white  dark:bg-neutral-700">
+        <div class="flex flex-wrap items-center">
+          <div class="hidden shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
+            <img src={data.book.volumeInfo?.imageLinks.thumbnail} alt="book cover"
+              class="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" />
+          </div>
+          <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
+            <div class="px-6 py-12 md:px-12">
+              <h2 class="mb-4 text-3xl font-bold">
+                {data.book.volumeInfo?.title}
+              </h2>
+              <p class="mb-6 flex items-center font-bold uppercase text-danger dark:text-danger-500">
+                
+              </p>
+              <p class="mb-6 text-black dark:text-neutral-300 font-bold">
+                {data.book.volumeInfo?.authors}
+              </p>
+              <p class="text-black dark:text-neutral-300">
+                {data.book.volumeInfo?.description}
+              </p>
+              {/* <a href={data.book.volumeInfo?.infoLink}>More Info</a> */}
+              <a href={data.book.volumeInfo?.infoLink} className="text-xl text-blue-700"
+                >More Info</a>
+              {props.state.user ? (
+        <button onClick={addToFavorites}>Add to Favorites</button>
+      ) : <p><a href="/login">Login to add to favorites</a></p>}
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  </div>
+  );
+}
+
+export default Book;
+
+
+
+
+/* <>
       <img src={data.book.volumeInfo?.imageLinks.thumbnail} />
       <h1>{data.book.volumeInfo?.title}</h1>
       <h2>{data.book.volumeInfo?.authors}</h2>
