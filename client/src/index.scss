@@ -51,8 +51,25 @@ h3{
 
 main{
   flex: 1;
+  min-width: 100%;
 }
 
+#mainBanner{
+  max-height: 360px;
+   
+}
+.my-custom-line {
+  border: none;
+  height: 2px;
+  background-color: #333; /* Change this to the color you prefer */
+  width: 100%;
+}
+
+
+// styling for Book.js
+#bookCover{
+ 
+}
 
 
 @media (max-width: 600px) {

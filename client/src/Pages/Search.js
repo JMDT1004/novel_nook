@@ -25,31 +25,58 @@ function Search({ searchResults }) {
   }, []);
 
   return (
-    <div>
-      <h1>Search Books</h1>
+    <div className="container mx-auto p-8">
+  <h1 className="text-3xl font-bold mb-6">Search Results</h1>
+  <hr className="my-custom-line mb-10"></hr>
 
-      {/* Use BookCard component for search results */}
-      {searchResults.length ? <BookCard books={searchResults} /> : ''}
+  {/* Use BookCard component for search results */}
+  {searchResults.length ? <BookCard books={searchResults} /> : ''}
 
-      {!searchResults.length && (
-        <div>
-          <h2>Try These Out</h2>
-          {randomBooks.map((book) => (
-            <div key={book.id}>
-              <Link key={book.id} to={`/book/${book.id}`}>
+  {!searchResults.length && (
+    <div className="mt-8">
+      
+      <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
+        {randomBooks.map((book) => (
+          <div className="bg-white rounded-lg shadow-md p-4" key={book.id}>
+            <Link to={`/book/${book.id}`}>
+            <div className="h-48 flex items-center justify-center">
                 <img
                   src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
                   alt={`${book.volumeInfo.title} cover`}
+                  className="max-h-full w-auto"
                 />
-              </Link>
-              <h3>{book.volumeInfo.title}</h3>
-              <p>Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'}</p>
-            </div>
-          ))}
-        </div>
-      )}
+              </div>
+            </Link>
+            <h3 className="text-lg font-semibold mt-2">{book.volumeInfo.title}</h3>
+            <p className="mt-1 text-gray-600 text-center"> 
+              Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'} 
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
+  )}
+</div>
   );
 }
 
 export default Search;
+
+
+
+
+// <div>
+//           <h2>Try These Out</h2>
+//           {randomBooks.map((book) => (
+//             <div key={book.id}>
+//               <Link key={book.id} to={`/book/${book.id}`}>
+//                 <img
+//                   src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
+//                   alt={`${book.volumeInfo.title} cover`}
+//                 />
+//               </Link>
+//               <h3>{book.volumeInfo.title}</h3>
+//               <p>Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'}</p>
+//             </div>
+//           ))}
+//         </div>
