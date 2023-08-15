@@ -58,7 +58,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard state={state} setState={setState} />} />
             <Route path="/login" element={<Auth state={state} setState={setState}/>} />
             <Route path="/" element={<Landing />} />
-            <Route path="/book/:id" element={<Book state={state} />} />
+            <Route path="/book/:id" element={<Book state={state} setState={setState} />} />
           </Routes>
         </main>
 

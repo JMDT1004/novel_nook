@@ -46,5 +46,10 @@ router.post("/favorites", isAuthenticated, async (req, res) => {
       favorites
     })
   })
+
+  router.delete("/favorites/:id", isAuthenticated, async (req, res) => {
+    const favorite = await Favorite.findByIdAndDelete(req.params.id)
+    res.send({favorite})
+  })
   
   module.exports = router

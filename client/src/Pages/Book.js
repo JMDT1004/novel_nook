@@ -15,11 +15,19 @@ function Book(props) {
   }, []);
 
   async function addToFavorites() {
-    await axios.post("/api/favorites", {
+   const {data :{user}} = await axios.post("/api/favorites", {
       bookId: data.book.id,
       image: data.book.volumeInfo.imageLinks.thumbnail,
       title: data.book.volumeInfo.title,
     });
+
+    
+   
+
+
+    props.setState({ ...props.state, user : {...user} });
+
+    
     navigate("/dashboard");
   }
 
@@ -30,9 +38,9 @@ function Book(props) {
       <h2>{data.book.volumeInfo?.authors}</h2>
       <p>{data.book.volumeInfo?.description}</p>
       <a href={data.book.volumeInfo?.infoLink}>More Info</a>
-      {props.state.user && (
+      {props.state.user ? (
         <button onClick={addToFavorites}>Add to Favorites</button>
-      )}
+      ) : <p><a href="/login">Login to add to favorites</a></p>}
     </>
   );
 }
