@@ -14,14 +14,21 @@ function Book(props) {
       });
   }, []);
 
-  async function addToFavorites(){
-    await axios.post('/api/favorites', {
-        bookId: data.book.id,
-        image: data.book.volumeInfo.imageLinks.thumbnail,
-        title: data.book.volumeInfo.title,
-
+  async function addToFavorites() {
+   const {data :{user}} = await axios.post("/api/favorites", {
+      bookId: data.book.id,
+      image: data.book.volumeInfo.imageLinks.thumbnail,
+      title: data.book.volumeInfo.title,
     });
-    navigate('/dashboard');
+
+    
+   
+
+
+    props.setState({ ...props.state, user : {...user} });
+
+    
+    navigate("/dashboard");
   }
 
   return (
@@ -52,9 +59,9 @@ function Book(props) {
               {/* <a href={data.book.volumeInfo?.infoLink}>More Info</a> */}
               <a href={data.book.volumeInfo?.infoLink} className="text-xl text-blue-700"
                 >More Info</a>
-              {props.state.user && (
-          <button onClick={addToFavorites}>Add to Favorites</button>
-        )}
+              {props.state.user ? (
+        <button onClick={addToFavorites}>Add to Favorites</button>
+      ) : <p><a href="/login">Login to add to favorites</a></p>}
             </div>
             
           </div>
@@ -71,13 +78,17 @@ export default Book;
 
 
 
-{/* <>
+/* <>
       <img src={data.book.volumeInfo?.imageLinks.thumbnail} />
       <h1>{data.book.volumeInfo?.title}</h1>
       <h2>{data.book.volumeInfo?.authors}</h2>
       <p>{data.book.volumeInfo?.description}</p>
-      <a href="{data.book.volumeInfo?.infoLink}">More Info</a>
-      {props.state.user && (
+      <a href={data.book.volumeInfo?.infoLink}>More Info</a>
+      {props.state.user ? (
         <button onClick={addToFavorites}>Add to Favorites</button>
-      )}
-    </> */}
+      ) : <p><a href="/login">Login to add to favorites</a></p>}
+    </>
+  );
+}
+
+export default Book;

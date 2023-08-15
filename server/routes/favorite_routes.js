@@ -40,11 +40,16 @@ router.post("/favorites", isAuthenticated, async (req, res) => {
   
   // get all favorites
   router.get("/favorites", async (req, res) => {
-    const favorites = await Favorite.find({}).populate('user');
+    const favorites = await Favorite.find({}).limit(10).populate('user');
   
     res.send({
       favorites
     })
+  })
+
+  router.delete("/favorites/:id", isAuthenticated, async (req, res) => {
+    const favorite = await Favorite.findByIdAndDelete(req.params.id)
+    res.send({favorite})
   })
   
   module.exports = router

@@ -1,5 +1,23 @@
+import axios from "axios";
+
 function Dashboard(props) {
-  
+  async function deleteFromFavorites(favoriteId) {
+    try {
+      await axios.delete(`/api/favorites/${favoriteId}`);
+      // Update the state to remove the deleted favorite
+      const updatedFavorites = props.state.user.favorites.filter(
+        favorite => favorite._id !== favoriteId
+      );
+      props.setState({
+        user: {
+          ...props.state.user,
+          favorites: updatedFavorites
+        }
+      });
+    } catch (error) {
+      console.error("Error deleting favorite:", error);
+    }
+  }
  
   return (
     <>
@@ -13,6 +31,7 @@ function Dashboard(props) {
             <img alt={favorite.title} src={favorite.image} />
             <h3>{favorite.title}</h3>
           </a>
+          <button className="bg-red-500 px-2 py-2 text-white" onClick={() => deleteFromFavorites(favorite._id)}>Delete from favorites</button>
         </div>
       ))}
       </div>
