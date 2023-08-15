@@ -56,7 +56,7 @@ function App() {
             <Route path="/search" element={<Search searchResults={searchResults} />} />
             <Route path="/about" element={<About />} />
             <Route path="/dashboard" element={<Dashboard state={state} setState={setState} />} />
-            <Route path="/login" element={<Auth />} />
+            <Route path="/login" element={<Auth state={state} setState={setState}/>} />
             <Route path="/" element={<Landing />} />
             <Route path="/book/:id" element={<Book state={state} />} />
           </Routes>
