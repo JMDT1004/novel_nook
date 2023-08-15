@@ -1,4 +1,16 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 function Landing () {
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+       axios.get("/api/favorites")
+          .then(res => {
+              setFavorites(res.data.favorites);
+          });
+   
+  }, [])
+
   return (
   <>
     <div id="mainBanner" className="pt-10 flex justify-center ">
@@ -7,6 +19,29 @@ function Landing () {
 
     <div>
     <div className="container my-24 mx-auto md:px-6">
+    <section id="best" className="mb-10 text-center  ">
+    <div className=" max-width ">
+      <div className=" ">
+        <h2 id="bestSellers" className="mb-6  text-3xl font-bold">
+          See What Others Are Reading</h2>
+          <hr className="my-custom-line"></hr>
+          <div className="grid grid-cols-4 gap-4">
+          {favorites.map((favorite) => (
+            <div className="p-2 border rounded-lg">
+            <a className="block mb-2" href="/book/jfSn2RJZI9EC">
+              <img className="text-center" src={favorite.image} />
+                </a>
+                <h3 className="text-sm font-semibold mb-1">{favorite.title}</h3>
+                <p className="text-xs text-gray-600">Liked by: {favorite.user.username}</p>
+          </div>
+          ))}
+          
+
+          
+          </div>
+      </div>
+    </div>
+ </section>
   {/* <!-- Section: Design Block --> */}
   <section id="best" className="mb-10 text-center  ">
     <div className=" max-width ">
