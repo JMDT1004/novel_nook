@@ -19,6 +19,7 @@ function Book(props) {
       bookId: data.book.id,
       image: data.book.volumeInfo.imageLinks.thumbnail,
       title: data.book.volumeInfo.title,
+      user: props.state.user._id
     });
 
     

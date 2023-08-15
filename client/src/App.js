@@ -15,7 +15,7 @@ import Auth from "./Pages/Auth";
 import Search from "./Pages/Search";
 import Landing from "./Pages/Landing";
 import Book from "./Pages/Book";
-import Home from "./Pages/Home";
+
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -56,7 +56,7 @@ function App() {
           <Routes>
             <Route path="/search" element={<Search searchResults={searchResults} />} />
             <Route path="/about" element={<About />} />
-            <Route path="/articles" element={<Home state={state} setState={setState} />} />
+           
             <Route path="/dashboard" element={<Dashboard state={state} setState={setState} />} />
             <Route path="/login" element={<Auth state={state} setState={setState}/>} />
             <Route path="/" element={<Landing />} />
