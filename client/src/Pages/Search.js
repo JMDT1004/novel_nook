@@ -26,7 +26,7 @@ function Search({ searchResults }) {
 
   return (
     <div>
-      <h1>Search Books</h1>
+      <h1>Search Results</h1>
 
       {/* Use BookCard component for search results */}
       {searchResults.length ? <BookCard books={searchResults} /> : ''}

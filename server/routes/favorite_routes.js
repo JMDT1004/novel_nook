@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { validateToken } = require("../auth");
 
 const Favorite = require('../models/Favorite')
 const User = require('../models/User')
@@ -26,10 +27,7 @@ async function isAuthenticated(req, res, next) {
   
 
 router.post("/favorites", isAuthenticated, async (req, res) => {
-    const favorite = await Favorite.create({
-      text: req.body.text,
-      author: req.user._id
-    })
+    const favorite = await Favorite.create(req.body)
   
     const user = await User.findByIdAndUpdate(req.user._id, {
       $push: { favorites: favorite._id }
