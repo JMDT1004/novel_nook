@@ -4,7 +4,7 @@ function Dashboard(props) {
   async function deleteFromFavorites(favoriteId) {
     try {
       await axios.delete(`/api/favorites/${favoriteId}`);
-      // Update the state to remove the deleted favorite
+      
       const updatedFavorites = props.state.user.favorites.filter(
         favorite => favorite._id !== favoriteId
       );
@@ -23,6 +23,10 @@ function Dashboard(props) {
     <>
       <h2 className="text-3xl font-bold text-center">Welcome, {props.state.user?.username}!</h2>
       <h3 className="text-xl font-bold text-center">Here are your favorite books:</h3>
+
+      {!props.state.user?.favorites.length && (
+        <p className="text-center">You haven't favorited any books yet!</p>
+      )}
 
       <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
       {props.state.user?.favorites.map((favorite) => (
