@@ -31,7 +31,7 @@ function Dashboard(props) {
             <img alt={favorite.title} src={favorite.image} />
             <h3>{favorite.title}</h3>
           </a>
-          <button onClick={() => deleteFromFavorites(favorite._id)}>Delete from favorites</button>
+          <button className="bg-red-500 px-2 py-2 text-white" onClick={() => deleteFromFavorites(favorite._id)}>Delete from favorites</button>
         </div>
       ))}
       </div>
