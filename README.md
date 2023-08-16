@@ -10,20 +10,19 @@ Novel Nook continues to grow, united by a commitment to quality literature and a
 
 <img width="1193" alt="nnhomepage" src="https://github.com/jeremytboyer/novel-nook-app/assets/131481674/6d171fa9-a46d-4c97-b7b2-9356a88eb188">
 
-
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
 - [Contributing](#contributing)
+- [Meet the Team](#meet-the-team)
 - [License](#license)
 
 ## Installation
 To get Novel Nook up and running on your local machine, follow these steps:
 1. Clone the repository.
-2. Install the required dependencies by running  " Npm i " in your terminal.
-3. Start the development server by running  " Npm run dev " in your terminal. 
-
+2. Install the required dependencies by running "Npm i" in your terminal.
+3. Start the development server by running "Npm run dev" in your terminal.
 
 ## Usage
 Once Novel Nook is running, users can:
@@ -51,7 +50,13 @@ We welcome contributions from the community to enhance Novel Nook. To contribute
 4. Push the branch to your fork: `git push origin your-branch-name`.
 5. Open a pull request describing your changes.
 
-Before contributing, please reference our Terms of Use.
+>Before contributing, please reference our Terms of Use.
+
+## Meet the Team
+- [Jeremy Boyer](https://github.com/jeremytboyer)
+- [Jonathan Goncalves](https://github.com/jonjigoncalves)
+- [Jamil Barrett](https://github.com/jamilbarrett)
+- [Janoi Thompson](https://github.com/JMDT1004)
 
 ## License
 Novel Nook is licensed under the [MIT License](LICENSE). Refer to the [LICENSE](LICENSE) file for details.
