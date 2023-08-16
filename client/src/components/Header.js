@@ -37,7 +37,7 @@ function Header({ setSearchResults, state, setState }) {
 
   return (
     <header className="top  ">
-      <nav className="flex items-center justify-around bg-blueGray-200 py-4 lg:px-12 shadow border-solid border-t-2 bg-blueGray-200 py-4 lg:px-12  ">
+      <nav className="flex items-center justify-around  py-4 lg:px-12 shadow border-gray-400  border-t-2 border-b bg-blueGray-200 py-4 lg:px-12  ">
         <div className="menu w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8 mb-0">
           <div className="text-md font-bold text-blue-700 lg:flex-grow">
             <h3 className="novelNook text-xl " id="novel">
