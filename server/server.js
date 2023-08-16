@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 const app = express();
 const db = require("./db/connection");
@@ -9,7 +10,7 @@ const PORT = process.env.PORT || 3333;
 const is_prod = process.env.PORT;
 
 if (is_prod) {
-  app.use(express.static(path.join(__dirname, "../browser/build")));
+  app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
 // import routes
