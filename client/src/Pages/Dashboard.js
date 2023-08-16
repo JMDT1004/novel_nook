@@ -86,7 +86,7 @@ function Dashboard(props) {
             <div className="w-full lg:w-4/12 px-4 lg:order-1">
               <div className="flex justify-center py-4 lg:pt-4 pt-8">
                 <div className="mr-4 p-3  text-center">
-                  <span className="text-5xl font-bold block uppercase tracking-wide text-blueGray-600">{props.state.user?.favorites.length}</span><span className="text-xl text-blueGray-400">Saved Books</span>
+                  <span className="text-5xl font-bold block uppercase tracking-wide text-blueGray-600">{props.state.user?.favorites?.length}</span><span className="text-xl text-blueGray-400">Saved Books</span>
                 </div>
                            
               </div>
@@ -94,7 +94,7 @@ function Dashboard(props) {
           </div>
           <div id="favorites" className="text-center mt-12">
             <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700">
-            {props.state.user?.username.toUpperCase()}
+            {props.state.user?.username?.toUpperCase()}
             </h3>
             <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-900 font-bold uppercase">
               <i id="location" className="mr-2 text-lg text-blueGray-400">{location}</i>
@@ -128,12 +128,12 @@ function Dashboard(props) {
           Favorites</h2>
           <hr className="my-custom-line"></hr>
 
-      {!props.state.user?.favorites.length && (
+      {!props.state.user?.favorites?.length && (
         <p className="text-center mb-32">You haven't favorited any books yet!</p>
       )}
 
       <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
-      {props.state.user?.favorites.map((favorite) => (
+      {props.state.user?.favorites?.map((favorite) => (
         <div className="bg-white h-full rounded-lg shadow-md p-4" key={favorite._id}>
           <div className="text-center flex items-center justify-center my-auto">
           <a href={`book/${favorite.bookId}`}>

@@ -18,24 +18,21 @@ import Book from "./Pages/Book";
 import UnderConstruction from "./Pages/UnderConstruction";
 import BestSellers from "./Pages/BestSellers";
 
-
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [state, setState] = useState({
     user: null,
-    loading: true
+    loading: true,
   });
 
   useEffect(() => {
-    axios.get('/api/authenticated')
-      .then(res => {
-        console.log(res.data.user)
-        setState({
-          ...state,
-          user: res.data.user,
-          loading: false,
-        })
-      })
+    axios.get("/api/authenticated").then((res) => {
+      setState({
+        ...state,
+        user: res.data.user,
+        loading: false,
+      });
+    });
   }, []);
 
   return (
@@ -52,18 +49,34 @@ function App() {
           />
         </Helmet>
 
-        <Header state={state} setState={setState} setSearchResults={setSearchResults} />
+        <Header
+          state={state}
+          setState={setState}
+          setSearchResults={setSearchResults}
+        />
 
         <main>
           <Routes>
-            <Route path="/search" element={<Search searchResults={searchResults} />} />
+            <Route
+              path="/search"
+              element={<Search searchResults={searchResults} />}
+            />
             <Route path="/bestsellers" element={<BestSellers />} />
             <Route path="/about" element={<About />} />
             <Route path="/cart" element={<UnderConstruction />} />
-            <Route path="/dashboard" element={<Dashboard state={state} setState={setState} />} />
-            <Route path="/login" element={<Auth state={state} setState={setState}/>} />
+            <Route
+              path="/dashboard"
+              element={<Dashboard state={state} setState={setState} />}
+            />
+            <Route
+              path="/login"
+              element={<Auth state={state} setState={setState} />}
+            />
             <Route path="/" element={<Landing />} />
-            <Route path="/book/:id" element={<Book state={state} setState={setState} />} />
+            <Route
+              path="/book/:id"
+              element={<Book state={state} setState={setState} />}
+            />
           </Routes>
         </main>
 

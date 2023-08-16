@@ -23,30 +23,25 @@ function Book(props) {
       title: data.book.volumeInfo.title,
       user: props.state.user._id,
     });
+    const found = user.favorites.find((element) => element.bookId === id);
+    console.log(user.favorites, id, found);
 
-    props.setState({ ...props.state, user: { ...user } });
-
-    
+    props.setState({ ...props.state, user });
   }
-
-  async function deleteFromFavorites(favoriteId) {
+  async function deleteFromFavorites(bookId) {
     try {
-      const user = await axios.delete(`/api/favorites/${favoriteId}`);
+      const {
+        data: { user },
+      } = await axios.delete(`/api/favorites/${bookId}`);
 
-     
-      
       props.setState({
         ...props.state,
-        user: {
-          ...user,
-         
-        },
+        user,
       });
     } catch (error) {
       console.error("Error deleting favorite:", error);
     }
   }
-  console.log(data.book);
 
   return (
     <div className="container my-24 mx-auto md:px-6">
@@ -92,12 +87,10 @@ function Book(props) {
                 //   (element) => element.book?.bookId === id
                 // ) ? (
                 // )}
-                props.state.user?.favorites?.some((favorite) => {
-                    return favorite.bookId === id;
-                  }) ? (
+                props.state?.user?.favorites.find((f) => f.bookId === id) ? (
                   <button
                     className="bg-red-600 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-xl outline-none focus:outline-none mr-1 mb-1"
-                    onClick={() => deleteFromFavorites(data.book.id)}
+                    onClick={() => deleteFromFavorites(id)}
                   >
                     Delete from Favorites
                   </button>
