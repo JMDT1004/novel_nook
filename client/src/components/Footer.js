@@ -28,13 +28,7 @@ function Footer() {
                     <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="/about">About Us</a>
                   </li>
                   <li>
-                    <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://whatshotblog.com/">Blog</a>
-                  </li>
-                  <li>
                     <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/jeremytboyer/novel-nook-app">Github</a>
-                  </li>
-                  <li>
-                    <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">Free Products</a>
                   </li>
                 </ul>
               </div>
