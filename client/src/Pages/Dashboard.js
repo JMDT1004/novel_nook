@@ -93,7 +93,7 @@ function Dashboard(props) {
             </div>
           </div>
           <div id="favorites" className="text-center mt-12">
-            <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+            <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700">
             {props.state.user?.username.toUpperCase()}
             </h3>
             <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-900 font-bold uppercase">
