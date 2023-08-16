@@ -1,8 +1,10 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const token = process.env.REACT_APP_IPINFO_TOKEN;
 
 function Dashboard(props) {
+  const [location, setLocation] = useState('Location Loading...');
   async function deleteFromFavorites(favoriteId) {
     try {
       await axios.delete(`/api/favorites/${favoriteId}`);
@@ -20,7 +22,9 @@ function Dashboard(props) {
       console.error("Error deleting favorite:", error);
     }
   }
-  const locationElement = document.getElementById('location');
+  
+  useEffect(() => {
+    const locationElement = document.getElementById('location');
 
     // Fetch the user's location based on their IP address using ipinfo.io API
     fetch('https://ipinfo.io?token=a12fa57358328f')
@@ -31,14 +35,17 @@ function Dashboard(props) {
         const country = data.country || 'Unknown Country';
 
         const locationText = `${city}, ${region}, ${country}`;
-        locationElement.innerHTML = `
-          <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"> ${locationText}</i>
+        // locationElement.innerHTML = `
+        //   <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"> ${locationText}</i>
           
-        `;
+        // `;
+
+        setLocation(locationText);
       })
       .catch(error => {
         console.log(error);
       });
+  })
   
       
   return (
@@ -64,14 +71,14 @@ function Dashboard(props) {
           <div className="flex flex-wrap justify-center">
             <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
               <div className="relative">
-                <img alt="..." src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg" className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"/>
+                <img alt="..." src="https://img.freepik.com/free-vector/cute-earth-planet-wearing-glasses_1308-124297.jpg?w=2000" className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"/>
               </div>
             </div>
             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
               <div className="py-6 px-3 mt-32 sm:mt-0">
                 <a href="#favorites">
                   <button className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
-                     Favorites
+                    View Favorites
                   </button>
                 </a>
               </div>
@@ -79,7 +86,7 @@ function Dashboard(props) {
             <div className="w-full lg:w-4/12 px-4 lg:order-1">
               <div className="flex justify-center py-4 lg:pt-4 pt-8">
                 <div className="mr-4 p-3  text-center">
-                  <span className="text-5xl font-bold block uppercase tracking-wide text-blueGray-600">22</span><span className="text-xl text-blueGray-400">Saved Books</span>
+                  <span className="text-5xl font-bold block uppercase tracking-wide text-blueGray-600">{props.state.user?.favorites.length}</span><span className="text-xl text-blueGray-400">Saved Books</span>
                 </div>
                            
               </div>
@@ -87,17 +94,17 @@ function Dashboard(props) {
           </div>
           <div id="favorites" className="text-center mt-12">
             <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-            {props.state.user?.username}
+            {props.state.user?.username.toUpperCase()}
             </h3>
-            <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-              <i id="location" className="fas  mr-2 text-lg text-blueGray-400">Location Loading...</i>
+            <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-900 font-bold uppercase">
+              <i id="location" className="mr-2 text-lg text-blueGray-400">{location}</i>
               
             </div>
             <div className="mb-2 text-blueGray-600 mt-10">
-              <i className="fas  mr-2 text-2xl text-center text-blueGray-700">Member Since</i>
+              <i className="font-semibold mr-2 text-2xl text-center text-blueGray-700">Member Since</i>
             </div>
-            <div className="mb-2 text-blueGray-600">
-            <i id="" className="fas  mr-2 text-2xl text-center text-blueGray-400"></i>
+            <div className="mb-6 text-blueGray-600">
+            
               {/* Check if createdAt is available before rendering */}
               {props.state.user?.createdAt ? (
                 <span className="text-3xl text-center">{new Date(props.state.user.createdAt).toLocaleDateString('en-US', {
@@ -117,7 +124,7 @@ function Dashboard(props) {
     
   </section>
 </main>
-<h2 id="favorites" className="mb-6  text-4xl font-bold">
+<h2 id="favorites" className="mb-1 text-center mt-6 text-4xl font-bold">
           Favorites</h2>
           <hr className="my-custom-line"></hr>
 
