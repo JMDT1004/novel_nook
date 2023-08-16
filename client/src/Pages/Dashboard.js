@@ -54,7 +54,7 @@ function Dashboard(props) {
   <section className="relative block h-500-px">
     <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')",
+          "url('https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
       }}>
       <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-black"></span>
     </div>

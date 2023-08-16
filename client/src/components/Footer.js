@@ -12,11 +12,26 @@ function Footer() {
             </h5>
             <div className="mt-6 lg:mb-0 mb-6">
               <button className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-m outline-none focus:outline-none mr-2" type="button">
-                <i className="fab fa-twitter" href="https://twitter.com/home"></i></button><button className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                <i className="fab fa-facebook-square" href="https://www.facebook.com/"></i></button><button className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                <i className="fab fa-discord" href="https://discord.com/home"></i></button><button className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                <i className="fab fa-instagram" href="https://www.instagram.com/"></i>
+                <a href="https://twitter.com/home">
+                  <i className="fab fa-twitter"></i>
+                </a>
               </button>
+              <button className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+                <a href="https://www.facebook.com/">
+                  <i className="fab fa-facebook-square"></i>
+                </a>
+              </button>
+              <button className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+                <a href="https://discord.com/home">
+                  <i className="fab fa-discord"></i>
+                </a>
+              </button>
+              <button className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+                <a href="https://www.instagram.com/">
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </button>
+
             </div>
           </div>
           <div className="w-full lg:w-6/12 px-4">
