@@ -21,7 +21,7 @@ function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) 
              onSubmit={handleSubmit}>{errorMessage && <p>{errorMessage}</p>}
              
 					    <div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="username">
+								<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="username">
 									Email
 								</label>
 								<input
@@ -35,7 +35,7 @@ function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) 
 							</div>
 
 							<div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="password">
+								<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
 									Password
 								</label>
 								<input
@@ -46,7 +46,7 @@ function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) 
                   value={formData.password}
                   placeholder="Enter your password"
 								/>
-								<p className="text-xs italic text-red-500">Please choose a password.</p>
+								
 							</div>
 
 							<div className="mb-6 text-center">
@@ -88,7 +88,7 @@ function RegisterForm({ handleInputChange, handleSubmit, errorMessage, formData 
              onSubmit={handleSubmit}>{errorMessage && <p>{errorMessage}</p>}
              
 							<div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="username">
+								<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="username">
 									Username
 								</label>
 								<input
@@ -102,7 +102,7 @@ function RegisterForm({ handleInputChange, handleSubmit, errorMessage, formData 
 							</div>
 
               <div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="username">
+								<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="username">
 									Email
 								</label>
 								<input
@@ -116,7 +116,7 @@ function RegisterForm({ handleInputChange, handleSubmit, errorMessage, formData 
 							</div>
 
 							<div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="password">
+								<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
 									Password
 								</label>
 								<input
@@ -132,7 +132,7 @@ function RegisterForm({ handleInputChange, handleSubmit, errorMessage, formData 
 
 							<div className="mb-4">
 								<input className="mr-2 leading-tight" type="checkbox" id="checkbox_id" />
-								<label className="text-sm" for="checkbox_id">
+								<label className="text-sm" htmlFor="checkbox_id">
 									Remember Me
 								</label>
 							</div>

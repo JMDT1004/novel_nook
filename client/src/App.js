@@ -15,6 +15,8 @@ import Auth from "./Pages/Auth";
 import Search from "./Pages/Search";
 import Landing from "./Pages/Landing";
 import Book from "./Pages/Book";
+import UnderConstruction from "./Pages/UnderConstruction";
+import BestSellers from "./Pages/BestSellers";
 
 
 function App() {
@@ -55,8 +57,9 @@ function App() {
         <main>
           <Routes>
             <Route path="/search" element={<Search searchResults={searchResults} />} />
+            <Route path="/bestsellers" element={<BestSellers />} />
             <Route path="/about" element={<About />} />
-           
+            <Route path="/cart" element={<UnderConstruction />} />
             <Route path="/dashboard" element={<Dashboard state={state} setState={setState} />} />
             <Route path="/login" element={<Auth state={state} setState={setState}/>} />
             <Route path="/" element={<Landing />} />

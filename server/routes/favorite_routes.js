@@ -40,7 +40,7 @@ router.post("/favorites", isAuthenticated, async (req, res) => {
   
   // get all favorites
   router.get("/favorites", async (req, res) => {
-    const favorites = await Favorite.find().sort({ createdAt: -1 }).limit(4).populate('user');
+    const favorites = await Favorite.find().sort({ createdAt: -1 }).limit(8).populate('user');
   
     res.send({
       favorites

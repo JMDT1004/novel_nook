@@ -57,7 +57,7 @@ function Header({ setSearchResults, state, setState }) {
 
               <li className="font-semibold text-gray-700">
                 <NavLink
-                  to="/articles"
+                  to="/bestsellers"
                   className={({ isActive }) =>
                     isActive ? "text-blue-600 active-link" : ""
                   }
