@@ -8,6 +8,8 @@ However, Novel Nook is more than a reading platform; it's a community. Users can
 
 Novel Nook continues to grow, united by a commitment to quality literature and a shared passion for storytelling.
 
+[Visit the Novel Nook website](https://novel-nook-33a87b58d266.herokuapp.com/)
+
 <img width="1193" alt="nnhomepage" src="https://github.com/jeremytboyer/novel-nook-app/assets/131481674/6d171fa9-a46d-4c97-b7b2-9356a88eb188">
 
 
