@@ -53,7 +53,7 @@ console.log(favorites);
   {/* <!-- Section: Design Block --> */}
   <section id="best" className="mb-10 text-center  ">
     <div className=" max-width ">
-      <div className=" ">
+      <div className="mt-16 ">
         <h2 id="bestSellers" className="mb-6  text-3xl font-bold">
           BestSellers</h2>
           <hr className="my-custom-line"></hr>
