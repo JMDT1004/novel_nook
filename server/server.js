@@ -24,6 +24,12 @@ app.use(cookieParser());
 
 app.use("/api", [favorite_routes, user_routes]);
 
+if (is_prod) {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+}
+
 // ensure the db is open/start the server
 db.once("open", () => {
   // start express
