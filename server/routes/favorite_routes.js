@@ -54,10 +54,20 @@ router.get("/favorites", async (req, res) => {
 });
 
 router.delete("/favorites/:id", isAuthenticated, async (req, res) => {
-  await Favorite.findByIdAndDelete(req.params.id);
-  const user = await User.findByIdAndUpdate(req.user._id, {
-    $pull: { favorites: req.params.id },
-  }, { new: true }).populate("favorites");
+  const fav = await Favorite.findOneAndDelete({
+    bookId: req.params.id,
+  });
+
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $pull: {
+        favorites: fav._id,
+      },
+    },
+    { new: true }
+  ).populate("favorites");
+
   res.send({ user });
 });
 
