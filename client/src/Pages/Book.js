@@ -6,11 +6,24 @@ function Book(props) {
   const [data, setData] = useState({ book: {} });
   const { id } = useParams();
   const navigate = useNavigate();
+  const [similarBooks, setSimilarBooks] = useState([]);
   useEffect(() => {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
       .then((result) => {
         setData({ book: result.data });
+        const author = result.data.volumeInfo.authors[0];
+        if (author) {
+          axios
+            .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}&maxResults=5`)
+            .then((response) => {
+              setSimilarBooks(response.data.items);
+            })
+            .catch((error) => {
+              console.error("Error fetching similar books:", error);
+            });
+        }
+
       });
   }, []);
 
@@ -64,8 +77,10 @@ function Book(props) {
                 <p className="mb-6 text-black dark:text-neutral-300 font-bold">
                   {data.book.volumeInfo?.authors}
                 </p>
-                <p className="text-black dark:text-neutral-300">
-                  {data.book.volumeInfo?.description}
+                <p dangerouslySetInnerHTML={{
+                  __html:data.book.volumeInfo?.description
+                }} className="text-black dark:text-neutral-300">
+                  
                 </p>
                 <br />
                 {/* <a href={data.book.volumeInfo?.infoLink}>More Info</a> */}
@@ -84,24 +99,24 @@ function Book(props) {
                     </a>
                   </p>
                 ) : // (props.state.user?.favorites.find(
-                //   (element) => element.book?.bookId === id
-                // ) ? (
-                // )}
-                props.state?.user?.favorites.find((f) => f.bookId === id) ? (
-                  <button
-                    className="bg-red-600 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-xl outline-none focus:outline-none mr-1 mb-1"
-                    onClick={() => deleteFromFavorites(id)}
-                  >
-                    Delete from Favorites
-                  </button>
-                ) : (
-                  <button
-                    className="bg-blue-600 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                    onClick={addToFavorites}
-                  >
-                    Add to Favorites
-                  </button>
-                )}
+                  //   (element) => element.book?.bookId === id
+                  // ) ? (
+                  // )}
+                  props.state?.user?.favorites.find((f) => f.bookId === id) ? (
+                    <button
+                      className="bg-red-600 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-xl outline-none focus:outline-none mr-1 mb-1"
+                      onClick={() => deleteFromFavorites(id)}
+                    >
+                      Delete from Favorites
+                    </button>
+                  ) : (
+                    <button
+                      className="bg-blue-600 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                      onClick={addToFavorites}
+                    >
+                      Add to Favorites
+                    </button>
+                  )}
 
                 {/* {props.state.user ? (
                 props.state.user?.favorites.includes(data.book.id) ? (
@@ -131,6 +146,40 @@ function Book(props) {
           </div>
         </div>
       </section>
+
+      <section id="best" className="mb-10 text-center  ">
+        <div className=" max-width ">
+          <div className=" ">
+            <h2 id="bestSellers" className="mb-6  text-3xl font-bold">
+              If You Liked this Book, Check Out These
+            </h2>
+            <hr className="my-custom-line"></hr>
+            <div className="grid grid-cols-4 gap-4">
+            {similarBooks.slice(0, 4).map((book) => (
+                <div key={book.id} className="p-2 border rounded-lg">
+                  <a
+                    className="block mb-2"
+                    href={`/book/${book.id}`}
+                  >
+                    <img
+                      className="object-cover  w-full mx-auto mb-2"
+                      src={book.volumeInfo.imageLinks?.thumbnail || 'Image not available'}
+                      alt={`${book.volumeInfo.title} cover`}
+                    />
+                  </a>
+                  <h3 className="text-sm font-semibold mb-1">
+                    {book.volumeInfo.title}
+                  </h3>
+                  <p className="text-xs text-gray-600">
+                    Author(s): {book.volumeInfo.authors?.join(', ') || 'Unknown author'}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

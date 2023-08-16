@@ -127,7 +127,7 @@ function RegisterForm({ handleInputChange, handleSubmit, errorMessage, formData 
                   value={formData.password}
                   placeholder="Enter your password"
 								/>
-								<p className="text-xs italic text-red-500">Please choose a password.</p>
+								<p className="text-xs italic text-red-500">Please choose a password with 6 characters.</p>
 							</div>
 
 							<div className="mb-4">
