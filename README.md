@@ -21,7 +21,7 @@ Novel Nook continues to grow, united by a commitment to quality literature and a
 ## Installation
 To get Novel Nook up and running on your local machine, follow these steps:
 1. Clone the repository.
-2. Install the required dependencies by running  " Npm i " in your terminal.
+2. Install the required dependencies at the root level, server and client by running  " Npm i " in your terminal.
 3. Start the development server by running  " Npm run dev " in your terminal. 
 
 
