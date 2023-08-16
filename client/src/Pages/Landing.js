@@ -10,7 +10,7 @@ function Landing () {
           });
    
   }, [])
-
+console.log(favorites);
   return (
   <>
     <div id="mainBanner" className="pt-10 flex justify-center ">
@@ -27,9 +27,10 @@ function Landing () {
           <hr className="my-custom-line"></hr>
           <div className="grid grid-cols-4 gap-4">
           {favorites.map((favorite) => (
+            
             <div className="p-2 border rounded-lg">
-            <a className="block mb-2" href="/book/jfSn2RJZI9EC">
-              <img className="text-center" src={favorite.image} />
+            <a className="block mb-2" href={"/book/"+favorite.bookId}>
+              <img className="object-cover w-full mx-auto mb-2" src={favorite.image} />
                 </a>
                 <h3 className="text-sm font-semibold mb-1">{favorite.title}</h3>
                 <p className="text-xs text-gray-600">Liked by: {favorite.user?.username}</p>

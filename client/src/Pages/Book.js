@@ -32,6 +32,24 @@ function Book(props) {
     navigate("/dashboard");
   }
 
+  async function deleteFromFavorites(favoriteId) {
+    try {
+      await axios.delete(`/api/favorites/${favoriteId}`);
+      
+      const updatedFavorites = props.state.user.favorites.filter(
+        favorite => favorite._id !== favoriteId
+      );
+      props.setState({
+        user: {
+          ...props.state.user,
+          favorites: updatedFavorites
+        }
+      });
+    } catch (error) {
+      console.error("Error deleting favorite:", error);
+    }
+  }
+
   return (
     <div className="container my-24 mx-auto md:px-6">
 
@@ -63,9 +81,30 @@ function Book(props) {
                 >More Info</a>
                 <br />
                 <br />
-              {props.state.user ? (
-        <button className="bg-blue-600 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" onClick={addToFavorites}>Add to Favorites</button>
-      ) : <p><a href="/login">Login to add to favorites</a></p>}
+                
+                {props.state.user ? (
+                props.state.user?.favorites.includes(data.book.id) ? (
+                  <button
+                    className="bg-red-600 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-xl outline-none focus:outline-none mr-1 mb-1"
+                    onClick={deleteFromFavorites}
+                  >
+                    Delete from Favorites
+                  </button>
+                ) : (
+                  <button
+                    className="bg-blue-600 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                    onClick={addToFavorites}
+                  >
+                    Add to Favorites
+                  </button>
+                )
+              ) : (
+                <p>
+                  <a className="text-xl text-blue-700" href="/login">
+                    Login to add to favorites
+                  </a>
+                </p>
+              )}
             </div>
             
           </div>

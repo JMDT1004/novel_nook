@@ -46,7 +46,7 @@ function LoginForm({ handleInputChange, handleSubmit, errorMessage, formData }) 
                   value={formData.password}
                   placeholder="Enter your password"
 								/>
-								<p className="text-xs italic text-red-500">Please choose a password.</p>
+								
 							</div>
 
 							<div className="mb-6 text-center">
