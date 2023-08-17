@@ -40,7 +40,7 @@ function Footer() {
                 <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Useful Links</span>
                 <ul className="list-unstyled">
                   <li>
-                    <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="/about">About Us</a>
+                    <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="/about">Meet the Team</a>
                   </li>
                   <li>
                     <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/jeremytboyer/novel-nook-app">Github</a>

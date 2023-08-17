@@ -39,19 +39,22 @@ function Header({ setSearchResults, state, setState }) {
     <header className="top  ">
       <nav className="flex items-center justify-around  py-4 lg:px-12 shadow border-gray-400  border-t-2 border-b bg-blueGray-200 py-4 lg:px-12  ">
         <div className="menu w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8 mb-0">
-          <div className="text-md font-bold text-blue-700 lg:flex-grow">
-            <h3 className="novelNook text-xl " id="novel">
+          <a href="/">
+            <h3 className="novelNook text-xl text-center pr-10 " id="novel">
               NOVEL<span id="nook">NOOK</span>
             </h3>
-            <ul className="flex items-center space-x-6 pl-5">
+          </a>
+          <div className="text-md font-bold text-blue-700 lg:flex-grow">
+            
+            <ul className="flex items-center space-x-6 ">
               <li className="font-semibold text-gray-700">
                 <NavLink
-                  to="/"
+                  to="/about"
                   className={({ isActive }) =>
                     isActive ? "text-blue-600 active-link" : ""
                   }
                 >
-                  Home
+                  About
                 </NavLink>
               </li>
 
@@ -61,7 +64,7 @@ function Header({ setSearchResults, state, setState }) {
                   className={({ isActive }) =>
                     isActive ? "text-blue-600 active-link" : ""
                   }
-                >
+                > 
                   Best Sellers
                 </NavLink>
               </li>
